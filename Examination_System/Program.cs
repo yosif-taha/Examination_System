@@ -1,6 +1,7 @@
 
 using Examination_System.Contracts;
 using Examination_System.Data;
+using Examination_System.Mapper.Instructors;
 using Examination_System.Mapper.Courses;
 using Examination_System.Repository;
 using Examination_System.Services;
@@ -12,7 +13,7 @@ namespace Examination_System
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args)                                                        
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -29,18 +30,16 @@ namespace Examination_System
             });
 
             builder.Services.AddAutoMapper(m => m.AddProfile(new CourseProfile()));
+            builder.Services.AddAutoMapper(m => m.AddProfile(new InstructorProfile()));
           
-            // builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
               builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
               builder.Services.AddScoped<ICourseService, CourseService>();
            
-            builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
-            {
+            {                                                                 
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }

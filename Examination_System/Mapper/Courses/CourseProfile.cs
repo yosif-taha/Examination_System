@@ -9,9 +9,13 @@ namespace Examination_System.Mapper.Courses
     {
         public CourseProfile() 
         {
-         
-
-           
+            CreateMap<Course, CourseDto>();
+            CreateMap<CourseDto,GetAllViewModel>();
+            CreateMap<AddCourseViewModel,CreateCourseDto>();
+            CreateMap<CreateCourseDto, Course>();
+            CreateMap<UpdateCourseViewModel, UpdateCourseDto>();
+            CreateMap<UpdateCourseDto, Course>();
+   
         }
     }
 }

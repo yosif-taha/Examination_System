@@ -12,6 +12,6 @@ namespace Examination_System.Models
         public int? UpdatedBy { get; set; } 
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public bool? IsDeleted { get; set; } 
+        public bool IsDeleted { get; set; } = false;
     }
 }

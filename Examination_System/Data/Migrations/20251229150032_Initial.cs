@@ -128,7 +128,7 @@ namespace Examination_System.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Enrollment",
+                name: "Enrollments",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
@@ -143,14 +143,14 @@ namespace Examination_System.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Enrollment", x => x.Id);
+                    table.PrimaryKey("PK_Enrollments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Enrollment_Courses_CoursesId",
+                        name: "FK_Enrollments_Courses_CoursesId",
                         column: x => x.CoursesId,
                         principalTable: "Courses",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Enrollment_Students_StudentsId",
+                        name: "FK_Enrollments_Students_StudentsId",
                         column: x => x.StudentsId,
                         principalTable: "Students",
                         principalColumn: "Id");
@@ -184,7 +184,7 @@ namespace Examination_System.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentCourses",
+                name: "StudentCourse",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
@@ -198,14 +198,14 @@ namespace Examination_System.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentCourses", x => x.Id);
+                    table.PrimaryKey("PK_StudentCourse", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentCourses_Courses_CourseId",
+                        name: "FK_StudentCourse_Courses_CourseId",
                         column: x => x.CourseId,
                         principalTable: "Courses",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_StudentCourses_Students_StudentId",
+                        name: "FK_StudentCourse_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id");
@@ -237,7 +237,7 @@ namespace Examination_System.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExamQuestions",
+                name: "ExamQuestion",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
@@ -251,21 +251,21 @@ namespace Examination_System.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExamQuestions", x => x.Id);
+                    table.PrimaryKey("PK_ExamQuestion", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ExamQuestions_Exams_ExamId",
+                        name: "FK_ExamQuestion_Exams_ExamId",
                         column: x => x.ExamId,
                         principalTable: "Exams",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_ExamQuestions_Questions_QuestionId",
+                        name: "FK_ExamQuestion_Questions_QuestionId",
                         column: x => x.QuestionId,
                         principalTable: "Questions",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentExams",
+                name: "StudentExam",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValueSql: "NEWSEQUENTIALID()"),
@@ -281,14 +281,14 @@ namespace Examination_System.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentExams", x => x.Id);
+                    table.PrimaryKey("PK_StudentExam", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_StudentExams_Exams_ExamId",
+                        name: "FK_StudentExam_Exams_ExamId",
                         column: x => x.ExamId,
                         principalTable: "Exams",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_StudentExams_Students_StudentId",
+                        name: "FK_StudentExam_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id");
@@ -322,9 +322,9 @@ namespace Examination_System.Data.Migrations
                         principalTable: "Questions",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_StudentResults_StudentExams_StudentExamId",
+                        name: "FK_StudentResults_StudentExam_StudentExamId",
                         column: x => x.StudentExamId,
-                        principalTable: "StudentExams",
+                        principalTable: "StudentExam",
                         principalColumn: "Id");
                 });
 
@@ -339,23 +339,23 @@ namespace Examination_System.Data.Migrations
                 column: "InstructorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollment_CoursesId",
-                table: "Enrollment",
+                name: "IX_Enrollments_CoursesId",
+                table: "Enrollments",
                 column: "CoursesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enrollment_StudentsId",
-                table: "Enrollment",
+                name: "IX_Enrollments_StudentsId",
+                table: "Enrollments",
                 column: "StudentsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExamQuestions_ExamId",
-                table: "ExamQuestions",
+                name: "IX_ExamQuestion_ExamId",
+                table: "ExamQuestion",
                 column: "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExamQuestions_QuestionId",
-                table: "ExamQuestions",
+                name: "IX_ExamQuestion_QuestionId",
+                table: "ExamQuestion",
                 column: "QuestionId");
 
             migrationBuilder.CreateIndex(
@@ -374,23 +374,23 @@ namespace Examination_System.Data.Migrations
                 column: "InstructorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentCourses_CourseId",
-                table: "StudentCourses",
+                name: "IX_StudentCourse_CourseId",
+                table: "StudentCourse",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentCourses_StudentId",
-                table: "StudentCourses",
+                name: "IX_StudentCourse_StudentId",
+                table: "StudentCourse",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentExams_ExamId",
-                table: "StudentExams",
+                name: "IX_StudentExam_ExamId",
+                table: "StudentExam",
                 column: "ExamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentExams_StudentId",
-                table: "StudentExams",
+                name: "IX_StudentExam_StudentId",
+                table: "StudentExam",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
@@ -418,13 +418,13 @@ namespace Examination_System.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Enrollment");
+                name: "Enrollments");
 
             migrationBuilder.DropTable(
-                name: "ExamQuestions");
+                name: "ExamQuestion");
 
             migrationBuilder.DropTable(
-                name: "StudentCourses");
+                name: "StudentCourse");
 
             migrationBuilder.DropTable(
                 name: "StudentResults");
@@ -433,7 +433,7 @@ namespace Examination_System.Data.Migrations
                 name: "Choices");
 
             migrationBuilder.DropTable(
-                name: "StudentExams");
+                name: "StudentExam");
 
             migrationBuilder.DropTable(
                 name: "Questions");
