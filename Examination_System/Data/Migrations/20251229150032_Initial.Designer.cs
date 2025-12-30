@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Examination_System.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20251225185729_Initial")]
+    [Migration("20251229150032_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -145,7 +145,7 @@ namespace Examination_System.Data.Migrations
 
                     b.HasIndex("StudentsId");
 
-                    b.ToTable("Enrollment");
+                    b.ToTable("Enrollments");
                 });
 
             modelBuilder.Entity("Examination_System.Models.Exam", b =>
@@ -228,7 +228,7 @@ namespace Examination_System.Data.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("ExamQuestions");
+                    b.ToTable("ExamQuestion");
                 });
 
             modelBuilder.Entity("Examination_System.Models.Instructor", b =>
@@ -368,7 +368,7 @@ namespace Examination_System.Data.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentCourses");
+                    b.ToTable("StudentCourse");
                 });
 
             modelBuilder.Entity("Examination_System.Models.StudentExam", b =>
@@ -411,7 +411,7 @@ namespace Examination_System.Data.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("StudentExams");
+                    b.ToTable("StudentExam");
                 });
 
             modelBuilder.Entity("Examination_System.Models.StudentResult", b =>
